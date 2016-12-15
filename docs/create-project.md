@@ -18,3 +18,6 @@ git push -u origin master
 ```
 
 3/ Create un instal.sh file
+
+
+* [NEXT: Create a npm project](/docs/npm-instalation.md)

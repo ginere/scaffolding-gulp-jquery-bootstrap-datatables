@@ -2,5 +2,6 @@
 
 
 * Use this to update your npm current installation:
-'''npm update -g 
-'''
+```
+npm update -g 
+```

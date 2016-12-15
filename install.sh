@@ -16,7 +16,12 @@ function test(){
 echo 1/ cleaning ...
 find . -name \*~ -print -type f -exec rm {} \; ; find . -name .DS_Store -print -type f -exec rm {} \; ; find . -name \#\*\# -print -type f -exec rm {} \;
 
+# grunt clear;
+export NODE_PRODUCTION=true
 
+echo 1/ Gulp dist
+gulp dist
+test "$?" "grunt clean";
 
 echo 2/ git add --all .
 git add --all .

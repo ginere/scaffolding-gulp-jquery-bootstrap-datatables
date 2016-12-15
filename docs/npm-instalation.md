@@ -54,6 +54,11 @@ npm i
 ```
 
 
+
+Configure the modules:
+/.jshintrc
+
+
 ## Add the project dependencies
 
 We can use bower and browserify-shim the mamtain this dependencies externalized, but we prefere to have everithing into a js file.
@@ -63,6 +68,10 @@ npm install --save font-awesome
 npm install --save jquery
 npm install --save q
 npm install --save normalize.css
+
+# This is to clean he html and should not be here
+npm install --save htmlclean
+
 
 # Install datatables
 * https://datatables.net/download/npm

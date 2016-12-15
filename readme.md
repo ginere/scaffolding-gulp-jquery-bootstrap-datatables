@@ -16,5 +16,6 @@ This is a sample project using: gulp-jquery-bootstrap-datatables
 
 * [Read Me](/readme.md)
 * [Documentation](/docs/readme.md)
-  * [Create a Github project](/docs/create-projecect.md)
+  * [Create a Github project](/docs/create-project.md)
   * [Create a npm project](/docs/npm-instalation.md)
+  * [NEXT: Gulp tasks](/docs/gulp.md)

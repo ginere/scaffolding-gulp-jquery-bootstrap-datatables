@@ -308,7 +308,7 @@ SINGLETON.render=function(_element){
 		// , "dom": '<lf<t>ip>'
 		// , "dom": '<"top"i>rt<"bottom"flp><"clear">'
 		, "dom": "<'#table-header'>" +
-			"<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'f>>" +
+			"<'row'<'col-sm-3'l><'col-sm-3'i><'col-sm-3'p><'col-sm-3'f>>" +
 			"<'row'<'col-sm-12'tr>>" +
 			"<'row'<'col-sm-5'i><'col-sm-7'p>>"
 

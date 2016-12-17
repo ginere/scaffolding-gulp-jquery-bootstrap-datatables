@@ -53,6 +53,8 @@ Also we can modify the package.json file and
 npm i
 ```
 
+https://github.com/RyanZim/EJS-Lint
+npm install ejs-lint
 
 
 Configure the modules:
@@ -79,8 +81,10 @@ npm install --save htmlclean
 npm install datatables.net
 npm install datatables.net-bs
 
-npm install datatables.net-autofill
-npm install datatables.net-autofill-bs
+
+* not needed
+// npm install datatables.net-autofill
+// npm install datatables.net-autofill-bs
 
 npm install datatables.net-buttons
 npm install datatables.net-buttons-bs
@@ -96,8 +100,9 @@ require( 'datatables.net-buttons/js/buttons.print.js' )();  # Print view button
 npm install datatables.net-colreorder
 npm install datatables.net-colreorder-bs // Styling via CSS only
 
-npm install datatables.net-fixedcolumns
-npm install datatables.net-fixedcolumns-bs // Styling via CSS only
+// Maybe in a future
+// npm install datatables.net-fixedcolumns
+// npm install datatables.net-fixedcolumns-bs // Styling via CSS only
 
 npm install datatables.net-responsive
 npm install datatables.net-responsive-bs

@@ -29,16 +29,30 @@ function fontsGulp() {
 // 	gulp.src(['app/images/*'])
 // 	    .pipe(gulp.dest(config.dist + '/images'));
 
-// CSS
+	// DATA
+ 	gulp.src(['app/ejs/data/*'])
+ 	    .pipe(gulp.dest(config.dist + '/data'));
+	
 
+	// JQUERY
+ 	gulp.src(['node_modules/jquery/dist/*'])
+ 	    .pipe(gulp.dest(config.distVendors + '/jquery'));
+
+	// NORMALIZE
  	gulp.src(['node_modules/normalize.css/normalize.css'])
  	    .pipe(gulp.dest(config.distVendors + '/normalize'));
 
- 	gulp.src(['node_modules/bootstrap/dist/**/'])
+	// BOOTSTRAP
+ 	gulp.src(['node_modules/bootstrap/dist/**/*'])
  	    .pipe(gulp.dest(config.distVendors + '/bootstrap'));
 
 
-    // Font
+	// Datatables
+ 	gulp.src(['node_modules/datatables.net*/**/'])
+ 	    .pipe(gulp.dest(config.distVendors + '/datatables'));
+
+
+    // Font-awesome
  	gulp.src(['node_modules/font-awesome/fonts/*'])
  	    .pipe(gulp.dest(config.distVendors + '/font-awesome/fonts'));
 	

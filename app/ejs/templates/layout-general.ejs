@@ -3,20 +3,55 @@
   <head>
 	<% include ../templates/head.ejs %>
    </head>
-<body class="nav-md layout">
+  <body class="container-fluid layout">
 
-    <div class="container body">
-      <div class="main_container">
+    <div class="container-fluid">
 
-
-<div class="right_col" role="main" id="layout-viewport">
-  Hellow Wolrd
+	  <!-- 
+		   display table table-striped table-bordered dataTable no-footer dt-bootstrap hover
+		-->
+	  <table id="table" cellspacing="0" width="100%" class="dt-bootstrap table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="text-center">
+			  <button id="delete-all-btn" type="button" class="btn btn-default btn-xs">&nbsp;<i class="fa fa-unlock-alt"></i>&nbsp;</button>
+			  Commission Proposal 
+			</th>
+            <th class="text-center btn-default"> <span class="badge">active</span> EP Mandate</th>
+            <th class="text-center">
+			  <button id="delete-all-btn" type="button" class="btn btn-default btn-xs">&nbsp;<i class="fa fa-ellipsis-h"></i>&nbsp;</button>
+			  Council Mandate</th>
+            <th class="text-center">Agreement</th>
+          </tr>
+        </thead>
+	  </table>
 </div>
 
+
+<script id="table-header-template" type="x-tmpl-template">
+  <section>
+	<div clas="row pull-right" style="margin:4px;padding:4px;">
+	  <div class="row">
+		<div class="col-md-8">
+		  <h4>OF THE TREATY ON EUROPEAN UNION <i>(2016/C 202/01)</i></h5>
+		</div>
+		<div class="col-md-4">
+		  <div class="dt-buttons btn-group">
+			<button id="clear-cache-btn" type="button" class="btn btn-default btn-xs"><i class="fa fa-flash"></i> Actions</button>
+			<button id="delete-all-btn" type="button" class="btn btn-default btn-xs"><i class="fa fa-lock"></i> Lock</button>
+			<button id="delete-all-btn" type="button" class="btn btn-default btn-xs"><i class="fa fa-filter"></i> Filter</button>
+			<button id="delete-all-btn" type="button" class="btn btn-default btn-xs"><i class="fa fa-ellipsis-h"></i> More</button>
+		  </div> 
+		</div> 
+	  </div> 
+	</div> 
+  </section>  
+</script>
+
 <% include ../templates/footer.ejs %>
-      </div>
-    </div>
-	<% include ../templates/javascript-footer.ejs %>
+
+<% include ../templates/javascript-footer.ejs %>
 </body>
 </html>
 

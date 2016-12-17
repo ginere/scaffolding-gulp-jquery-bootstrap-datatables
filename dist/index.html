@@ -26,46 +26,120 @@
  -->
 
 
-<!-- Custom Theme Style -->
+<!-- Custom Theme Style
 <link href="./css/custom.css" rel="stylesheet">
+ -->
 
 <!-- VENDORS -->
-<link href="./vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-<link href="./vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-<link href="./vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-<link href="./vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-<link href="./vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+<link href="./vendors/datatables/datatables.net-bs/css/dataTables.bootstrap.css" rel="stylesheet">
+<link href="./vendors/datatables/datatables.net-buttons-bs/css/buttons.bootstrap.css" rel="stylesheet">
+<link href="./vendors/datatables/datatables.net-responsive-bs/css/responsive.bootstrap.css" rel="stylesheet">
 
 <!-- col reorder-->
-<link href="/datatables.net-colreorder-bs/css/colReorder.bootstrap.min.css" rel="stylesheet">
+<link href="./vendors/datatables/datatables.net-colreorder-bs/css/colReorder.bootstrap.css" rel="stylesheet">
+
+<!-- 
+<link href="./vendors/datatables/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.css" rel="stylesheet">
+<link href="./vendors/datatables/datatables.net-scroller-bs/css/scroller.bootstrap.css" rel="stylesheet">
+-->
 
 <!-- Custom Theme Style -->
 <link href="./css/custom.css" rel="stylesheet">
 
    </head>
-<body class="nav-md layout">
+  <body class="container-fluid layout">
 
-    <div class="container body">
-      <div class="main_container">
+    <div class="container-fluid">
 
-
-<div class="right_col" role="main" id="layout-viewport">
-  Hellow Wolrd
+	  <!-- 
+		   display table table-striped table-bordered dataTable no-footer dt-bootstrap hover
+		-->
+	  <table id="table" cellspacing="0" width="100%" class="dt-bootstrap table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="text-center">
+			  <button id="delete-all-btn" type="button" class="btn btn-default btn-xs">&nbsp;<i class="fa fa-unlock-alt"></i>&nbsp;</button>
+			  Commission Proposal 
+			</th>
+            <th class="text-center btn-default"> <span class="badge">active</span> EP Mandate</th>
+            <th class="text-center">
+			  <button id="delete-all-btn" type="button" class="btn btn-default btn-xs">&nbsp;<i class="fa fa-ellipsis-h"></i>&nbsp;</button>
+			  Council Mandate</th>
+            <th class="text-center">Agreement</th>
+          </tr>
+        </thead>
+	  </table>
 </div>
 
+
+<script id="table-header-template" type="x-tmpl-template">
+  <section>
+	<div clas="row pull-right" style="margin:4px;padding:4px;">
+	  <div class="row">
+		<div class="col-md-8">
+		  <h4>OF THE TREATY ON EUROPEAN UNION <i>(2016/C 202/01)</i></h5>
+		</div>
+		<div class="col-md-4">
+		  <div class="dt-buttons btn-group">
+			<button id="clear-cache-btn" type="button" class="btn btn-default btn-xs"><i class="fa fa-flash"></i> Actions</button>
+			<button id="delete-all-btn" type="button" class="btn btn-default btn-xs"><i class="fa fa-lock"></i> Lock</button>
+			<button id="delete-all-btn" type="button" class="btn btn-default btn-xs"><i class="fa fa-filter"></i> Filter</button>
+			<button id="delete-all-btn" type="button" class="btn btn-default btn-xs"><i class="fa fa-ellipsis-h"></i> More</button>
+		  </div> 
+		</div> 
+	  </div> 
+	</div> 
+  </section>  
+</script>
+
 <footer>
-  <div class="pull-right">
-	Footer
+  <div class="container-fluid ">
   </div>
-  <div class="clearfix"></div>
 </footer>
 
-      </div>
-    </div>
-	
+
+
 <script>
   console.log("Loading javascript-footer.ejs");
 </script>
+
+<!-- jQuery -->
+<script src="./vendors/jquery/jquery.js"></script>
+<!-- Bootstrap -->
+<script src="./vendors/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Datatables -->
+<script src="./vendors/datatables/datatables.net/js/jquery.dataTables.js"></script>
+<script src="./vendors/datatables/datatables.net-bs/js/dataTables.bootstrap.js"></script>
+<script src="./vendors/datatables/datatables.net-buttons/js/dataTables.buttons.js"></script>
+
+<script src="./vendors/datatables/datatables.net-buttons-bs/js/buttons.bootstrap.js"></script>
+
+<script src="./vendors/datatables/datatables.net-buttons/js/buttons.flash.js"></script>
+<script src="./vendors/datatables/datatables.net-buttons/js/buttons.html5.js"></script>
+<script src="./vendors/datatables/datatables.net-buttons/js/buttons.print.js"></script>
+
+<script src="./vendors/datatables/datatables.net-responsive/js/dataTables.responsive.js"></script>
+<script src="./vendors/datatables/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+
+
+<!-- Col vis-->
+<script src="./vendors/datatables/datatables.net-buttons/js/buttons.colVis.js"></script>
+
+<!-- Col redorder-->
+
+<script src="./vendors/datatables/datatables.net-colreorder/js/dataTables.colReorder.js"></script>
+
+
+
+<!--
+<script src="./vendors/datatables/datatables.net-scroller/js/datatables.scroller.js"></script>
+<script src="./vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="./vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+-->
+
+
 
 <script src="./js/bundle.js"></script>
 

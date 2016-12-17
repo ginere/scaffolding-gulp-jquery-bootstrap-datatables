@@ -21,6 +21,9 @@ function watchGulp() {
 	gulp.watch(['app/js/**/*.js'],    
 			   ['jshint']);
 
+	gulp.watch(['app/ejs/data/*.json'],    
+			   ['copy']);
+
 //	gulp.watch(['app/index.html', 'app/views/**.html', 'app/views/directives/**.html'],  
 //			   ['views']);
 }

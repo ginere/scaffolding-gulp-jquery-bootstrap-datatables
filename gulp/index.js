@@ -55,8 +55,7 @@ gulp.task('dist', ['clean'],function(cb) {
 		'ejs-html',
 		'ejs-js',
 	    'styles', 
-	    'copy', 
-	    'jshint',
+	    'copy'
 		],[
 			'jshint',
 			'browserify'

@@ -11,7 +11,13 @@ This is a sample project using: gulp-jquery-bootstrap-datatables
 
 ## Diretories
 * /docs: This contain some files with docs.
-* /gulp
+* /gulp: The gulp taks
+* /dist: The distributions package
+* /app: The application source code
+  * /ejs: The source inside this folder is customized by the ejs templates
+  * /js:  Those files are generated from ./ejs/js
+  * /styles: The less files
+
 
 
 * [Read Me](/readme.md)

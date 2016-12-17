@@ -181,7 +181,7 @@ function tableClickEventhadler(event) {
 	// event.target
 
 	var td=event.currentTarget;
-	var tr = $(this).closest('tr');
+	var tr = $(td).closest('tr');
 	var row=table.row( tr );
 	var data=row.data();
 						

@@ -29,6 +29,8 @@ gulp.task('browserify', require('./tasks/browserify'));
 
 gulp.task('jshint',require("./tasks/jshint"));
 
+gulp.task('uglify',require("./tasks/uglify"));
+
 var runSequence = require('run-sequence');
 
 gulp.task('default', ['clean'],function(cb) {
@@ -59,5 +61,7 @@ gulp.task('dist', ['clean'],function(cb) {
 		],[
 			'jshint',
 			'browserify'
+		],[
+			'uglify'
 		]);
 });

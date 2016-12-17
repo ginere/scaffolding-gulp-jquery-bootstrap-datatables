@@ -46,6 +46,11 @@ npm install --save-dev gulp-util
 npm install --save-dev vinyl-source-stream vinyl-buffer watchify
 npm install --save-dev browserify-shim 
 npm install --save-dev brfs
+
+npm install --save-dev gulp-uglify
+npm install --save-dev pump
+npm install --save-dev gulp-rename
+
 ```
 
 Also we can modify the package.json file and 
@@ -55,6 +60,9 @@ npm i
 
 https://github.com/RyanZim/EJS-Lint
 npm install ejs-lint
+
+http://blog.berniesumption.com/software/on-abandoning-gulp/
+https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/
 
 
 Configure the modules:

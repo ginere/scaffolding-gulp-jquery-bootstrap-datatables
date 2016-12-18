@@ -1,7 +1,14 @@
 # scaffolding-gulp-jquery-bootstrap-datatables
 ----------------------------------------------
 
-This is a sample project using: gulp-jquery-bootstrap-datatables
+This is a sample project using: 
+* jquery
+* bootstrap
+* datatables
+* fontawesome
+* normalize.css
+* q.js
+
 
 * Developpement Tools:
  * Gulp

@@ -243,6 +243,7 @@ function setupEventHandlers(){
 	// $("table.dataTable > tbody > tr > td").click(tableClickEventhadler); 
 
 	$("table.dataTable").delegate("td","click",tableClickEventhadler); 
+	$("table.dataTable").delegate("textarea","focusout",closeCellEditor); 
 	
 
 //	$("table.dataTable > tbody > tr > td > textarea").click(tableClickEventhadler); 

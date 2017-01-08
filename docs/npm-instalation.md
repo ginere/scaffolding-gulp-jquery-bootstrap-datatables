@@ -86,16 +86,16 @@ npm install --save htmlclean
 # Install datatables
 * https://datatables.net/download/npm
 
-npm install datatables.net
-npm install datatables.net-bs
+npm install --save datatables.net
+npm install --save datatables.net-bs
 
 
 * not needed
 // npm install datatables.net-autofill
 // npm install datatables.net-autofill-bs
 
-npm install datatables.net-buttons
-npm install datatables.net-buttons-bs
+npm install --save datatables.net-buttons
+npm install --save datatables.net-buttons-bs
 
 require('datatables.net-buttons')();
 
@@ -105,15 +105,15 @@ require( 'datatables.net-buttons/js/buttons.flash.js' )();  # Flash file export
 require( 'datatables.net-buttons/js/buttons.print.js' )();  # Print view button
 
 
-npm install datatables.net-colreorder
-npm install datatables.net-colreorder-bs // Styling via CSS only
+npm install --save datatables.net-colreorder
+npm install --save datatables.net-colreorder-bs // Styling via CSS only
 
 // Maybe in a future
 // npm install datatables.net-fixedcolumns
 // npm install datatables.net-fixedcolumns-bs // Styling via CSS only
 
-npm install datatables.net-responsive
-npm install datatables.net-responsive-bs
+npm install --save datatables.net-responsive
+npm install --save datatables.net-responsive-bs
 
 
 # Using the dependencies:
@@ -125,9 +125,14 @@ npm install datatables.net-responsive-bs
 
 ## Javascript
 
-1/browserify require
+1/ browserify require
 2/ browserify-shim require
 
+
+# Diffing:
+* Using : https://github.com/kpdecker/jsdiff
+  * Exemple: http://kpdecker.github.io/jsdiff/
+```npm install diff```
 
 
 * [NEXT: Gulp tasks](/docs/gulp.md)

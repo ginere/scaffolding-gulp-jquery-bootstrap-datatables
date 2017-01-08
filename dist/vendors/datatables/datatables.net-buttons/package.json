@@ -6,12 +6,12 @@
     ]
   ],
   "_from": "datatables.net-buttons@*",
-  "_id": "datatables.net-buttons@1.2.3",
+  "_id": "datatables.net-buttons@1.2.4",
   "_inCache": true,
   "_location": "/datatables.net-buttons",
   "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/datatables.net-buttons-1.2.3.tgz_1481023869258_0.6878299296367913"
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/datatables.net-buttons-1.2.4.tgz_1481904360237_0.17725869687274098"
   },
   "_npmUser": {
     "email": "allan@datatables.net",
@@ -28,10 +28,11 @@
     "type": "range"
   },
   "_requiredBy": [
-    "#USER"
+    "/",
+    "/datatables.net-buttons-bs"
   ],
-  "_resolved": "https://registry.npmjs.org/datatables.net-buttons/-/datatables.net-buttons-1.2.3.tgz",
-  "_shasum": "d3f3fd7a4944acaddef85c3e9989e08db3a1a2ce",
+  "_resolved": "https://registry.npmjs.org/datatables.net-buttons/-/datatables.net-buttons-1.2.4.tgz",
+  "_shasum": "ad90a7eb3941996108eff6d5293c4733f1874329",
   "_shrinkwrap": null,
   "_spec": "datatables.net-buttons",
   "_where": "/Users/ventura/projects/ginere-nodejs/scaffolding-gulp-jquery-bootstrap-datatables",
@@ -50,8 +51,8 @@
   "devDependencies": {},
   "directories": {},
   "dist": {
-    "shasum": "d3f3fd7a4944acaddef85c3e9989e08db3a1a2ce",
-    "tarball": "https://registry.npmjs.org/datatables.net-buttons/-/datatables.net-buttons-1.2.3.tgz"
+    "shasum": "ad90a7eb3941996108eff6d5293c4733f1874329",
+    "tarball": "https://registry.npmjs.org/datatables.net-buttons/-/datatables.net-buttons-1.2.4.tgz"
   },
   "files": [
     "js/buttons.colVis.js",
@@ -88,5 +89,5 @@
     "type": "git",
     "url": "https://github.com/DataTables/Dist-DataTables-Buttons.git"
   },
-  "version": "1.2.3"
+  "version": "1.2.4"
 }

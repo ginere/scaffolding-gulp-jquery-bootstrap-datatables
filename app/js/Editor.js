@@ -9,6 +9,8 @@
 
 var $ = require('jquery');
 
+var JsDiff = require('diff');
+
 var KeyboardEvents=require('./KeyboardEvents');
 var Viewport=require('./Viewport');
 
@@ -17,6 +19,12 @@ var SINGLETON={};
 var el;
 var table;
 var Viewport;
+
+var currentRow=null;
+var currentId=null;
+var currentRowIndex=null;
+
+var doDiffing=false;
 
 // var DEFAULT_DT_CONFIG={
 // 	// ~/projects/ppms/wireframe/src/js/lib/page.js
@@ -78,6 +86,13 @@ function loadData(){
 		url:"./data/doc1.json",
 		cache:false,
 		"dataSrc":function(json){
+
+// 			$.each(json,function(index,el){
+// 				if (el.ep !== el.ceu){
+// 					el.agreement=JsDiff.diffWords(el.ep, el.ceu);
+// 				}
+//				
+// 			});
 			return checkServerJsonData(json);
 		}
 	};	
@@ -108,7 +123,6 @@ function changePage(forward){
 }
 
 function changeSelection(forward){
-	debugger;
 	var jTable=$(el);
 	var listSelected=jTable.find("tr.selected");
 	
@@ -145,9 +159,10 @@ function changeSelection(forward){
 	}
 }
 
-function editCell(data,row,tr,td){
+function editCell(data,row,tr,td,id,rowIndex){
 	var editor=$("#editor");
 
+	// check if the edir is already present in the cell
 	if ($.contains( td, editor[0] )){
 		return ;
 	}
@@ -156,10 +171,15 @@ function editCell(data,row,tr,td){
 	var height = $(td).height();
 	var width = $(td).width();
 
-	if (editor.length>0){
-		editor.parent().text(editor.val());
-	}
+	// close the current editor if any
+	closeCellEditor();
+
+	// create the new editor
 	$(td).html("<textarea id='editor'></textarea>");
+	currentRow=data;
+	console.log("1"+currentRow);
+	currentId=id;
+	currentRowIndex=rowIndex;
 
 	// reload the newly created editor
 	editor=$("#editor");
@@ -171,23 +191,64 @@ function editCell(data,row,tr,td){
 
 function closeCellEditor(){
 	var editor=$("#editor");
-	if (editor.length>0){
-		editor.parent().text(editor.val());
+	if (currentRow!==null && editor.length>0){
+		// TODO
+		console.log("2"+currentRow);
+		var value=editor.val();
+		editor.parent().text(value);
+		currentRow[currentId]=value;
+		currentRow=null;		
+
+		// display
+		table.cells( currentRowIndex, '' ).invalidate();
+		// table.cells( currentRowIndex, '' ).render( 'display' );
 	}
 }
 
 function tableClickEventhadler(event) {
 	// var td=this;
 	// event.target
+	// this==event.currentTarget
+	
+	//
+	// https://datatables.net/reference/type/column-selector
+	//
+	// var columnData = table.column( $(this).index()+':visIdx' ).data();
+	// table.column( $(this).index()+':visIdx' );
+
+	//
+	// https://datatables.net/reference/api/cells().render()
+	//
+	// var idx = table.cell( this ).index().row;
+    // var data = table.cells( idx, '' ).render( 'display' );
+
+	var column=table.column( $(event.currentTarget).index()+':visIdx' );
+	var id=column.header().id;
+
+	if (id !== "ceu" && id!=="ep"){
+		return ;
+	}
 
 	var td=event.currentTarget;
 	var tr = $(td).closest('tr');
 	var row=table.row( tr );
 	var data=row.data();
+	var rowIndex = table.cell( this ).index().row;
 						
-	editCell(data,row,tr,td);
+	editCell(data,row,tr,td,id,rowIndex);
 }
 
+
+function changeDiffing(event){
+	doDiffing=!doDiffing;
+
+	// table.cells( currentRowIndex, '' ).invalidate();
+	// table.draw();
+	// table.search('').draw();
+	table.cells( ).invalidate();
+	// table.column( 'agreement:name' ).invalidate();
+	// table.column( '#agreement' ).invalidate();
+}
 
 function searchKeySelection(event){
 	var focused = $(':focus');
@@ -237,6 +298,8 @@ function setupEventHandlers(){
 	KeyboardEvents.shorcut(27,false,closeCellEditor); // ESC
 	KeyboardEvents.shorcut(70,false,searchKeySelection); // F 
 
+	KeyboardEvents.shorcut(68,false,changeDiffing); // F 
+
 	// te problem are child tables of this current tables...
 	// $("table.dataTable > tbody > tr > td").off("click"); 
 	// $(document).on("click","table.dataTable > tbody > tr > td",tableClickEventhadler); 
@@ -262,7 +325,6 @@ SINGLETON.render=function(_element){
 	Viewport=new Viewport();
 
 	el.on( 'error.dt', function ( e, settings, techNote, message ) {
-		debugger;
         console.log( 'An error has been reported by DataTables: ', message );
     } ).DataTable({
 		"columns": [{ 
@@ -278,21 +340,21 @@ SINGLETON.render=function(_element){
 			"searchable":true,
 			"orderable":false,
 			"width": "25%",
-			"className":"dt-left",
+			"className":"dt-left"
 		},{
 			"data":"ep",
 			"type": "string",
 			"searchable":true,
 			"orderable":false,
 			"width": "25%",
-			"className":"dt-left",
+			"className":"dt-left"
 		},{
 			"data":"ceu",
 			"type": "string",
 			"searchable":true,
 			"orderable":false,
 			"width": "25%",
-			"className":"dt-left",
+			"className":"dt-left"
 		},{
 			"data":"agreement",
 			"type": "string",
@@ -300,6 +362,26 @@ SINGLETON.render=function(_element){
 			"orderable":false,
 			"width": "24%",
 			"className":"dt-left",
+			render:function( diff, type, row, meta ){
+				if (doDiffing && row.ep !== row.ceu){
+					var diff=JsDiff.diffWords(row.ep, row.ceu);
+					row.agreement=diff;
+					
+					if (diff) {
+						var ret="";
+						diff.forEach(function(part){
+							// green for additions, red for deletions
+							// grey for common parts
+							var color = part.added ? 'green' :
+								part.removed ? 'red' : 'grey';
+							
+							ret+='<span style="color:'+color+'">'+part.value+'</span>';
+						});
+						return ret;
+					}
+				} 
+				return "";
+			}
 		}]			
 		,"order": [[ 0, "asc" ]]
 		// https://datatables.net/reference/option/dom

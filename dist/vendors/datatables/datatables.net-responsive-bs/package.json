@@ -28,7 +28,7 @@
     "type": "range"
   },
   "_requiredBy": [
-    "#USER"
+    "/"
   ],
   "_resolved": "https://registry.npmjs.org/datatables.net-responsive-bs/-/datatables.net-responsive-bs-2.1.1.tgz",
   "_shasum": "8770c0fad439a7839b1633cf454e01f227dde877",

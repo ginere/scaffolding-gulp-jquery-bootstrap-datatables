@@ -28,7 +28,10 @@
     "type": "range"
   },
   "_requiredBy": [
-    "#USER"
+    "/",
+    "/datatables.net-buttons-bs",
+    "/datatables.net-colreorder-bs",
+    "/datatables.net-responsive-bs"
   ],
   "_resolved": "https://registry.npmjs.org/datatables.net-bs/-/datatables.net-bs-1.10.13.tgz",
   "_shasum": "794ab40a21afdf8b40ff762f7ea9a06ead9f8a2c",

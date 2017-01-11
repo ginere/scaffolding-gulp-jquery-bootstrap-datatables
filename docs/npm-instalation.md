@@ -134,5 +134,18 @@ npm install --save datatables.net-responsive-bs
   * Exemple: http://kpdecker.github.io/jsdiff/
 ```npm install diff```
 
+# SAS
 
+npm install --save-dev gulp-sass    
+npm install --save-dev gulp-plumber
+npm install --save-dev gulp-sourcemaps
+npm install --save-dev gulp-plumber
+npm install --save-dev gulp-css-globbing
+npm install --save-dev eyeglass
+npm install --save-dev gulp-autoprefixer
+npm install --save-dev gulp-notify
+
+        
 * [NEXT: Gulp tasks](/docs/gulp.md)
+
+    

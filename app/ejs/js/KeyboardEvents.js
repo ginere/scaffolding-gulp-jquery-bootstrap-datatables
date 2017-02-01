@@ -14,6 +14,8 @@ var SINGLETON={};
 var M_keyMap={}; // Modifier key map
 var NM_keyMap={}; // No Modifier key map
 
+var defaultFunction=null;
+
 function handleEvent(event){
 	var code=event.which;
 	var f;
@@ -29,7 +31,11 @@ function handleEvent(event){
 			
 			// event.preventDefault();
 		} else {
-			console.debug("M Key code:"+code);
+			if (defaultFunction){
+				defaultFunction(event);
+			} else {
+				console.debug("M Key code:"+code);
+			}
 		}						
 	} else {
 		// ESC KEY Traverses elements is global
@@ -40,7 +46,11 @@ function handleEvent(event){
 				
 				// event.preventDefault();
 			} else {
-				console.debug("Key code:"+code);
+				if (defaultFunction){
+					defaultFunction(event);
+				} else {
+					console.debug("Key code:"+code);
+				}
 			}						
 		}
 	}
@@ -61,6 +71,12 @@ SINGLETON.shorcut=function(keyCode,modifier,f){
 			}
 			NM_keyMap[keyCode]=f;
 		}
+	}
+};
+
+SINGLETON.default=function(f){
+	if ($.isFunction(f)){
+		defaultFunction=f;
 	}
 };
 

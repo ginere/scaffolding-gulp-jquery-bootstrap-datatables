@@ -1,5 +1,5 @@
 /**
- * The Editor main class
+ * This contains the 4 columns editor
  *
  * - The entry point is the render 
  */
@@ -11,6 +11,8 @@ var $ = require('jquery');
 
 var JsDiff = require('diff');
 
+var Store = require('./Store');
+
 var KeyboardEvents=require('./KeyboardEvents');
 var Viewport=require('./Viewport');
 
@@ -18,7 +20,7 @@ var SINGLETON={};
 
 var el;
 var table;
-var Viewport;
+var viewport;
 
 var currentRow=null;
 var currentId=null;
@@ -78,6 +80,7 @@ var doDiffing=false;
 
 // see // 	// ~/projects/ppms/wireframe/src/js/lib/page.js
 function checkServerJsonData(json,url){
+	Store.inserDataLoaded(json);	
 	return json;
 }
 
@@ -86,7 +89,6 @@ function loadData(){
 		url:"./data/doc1.json",
 		cache:false,
 		"dataSrc":function(json){
-
 // 			$.each(json,function(index,el){
 // 				if (el.ep !== el.ceu){
 // 					el.agreement=JsDiff.diffWords(el.ep, el.ceu);
@@ -120,6 +122,15 @@ function changePage(forward){
 		}
 	}
 	table.page(nextPage).draw(false);
+
+	var jTable=$(el);
+	var listSelected=jTable.find("tr.selected");
+	if (listSelected.length===0){
+		listSelected=jTable.find("tr:eq(1)");
+		listSelected.addClass('selected');
+	}
+	
+	viewport.scrollToElement(listSelected);	
 }
 
 function changeSelection(forward){
@@ -131,11 +142,11 @@ function changeSelection(forward){
 		if (forward) { // Select the first element that is the second row. The first row is the header.
 			jTable.find("tr:eq(1)").toggleClass('selected');
 			
-			Viewport.scrollToElement(jTable.find("tr:eq(1)"));
+			viewport.scrollToElement(jTable.find("tr:eq(1)"));
 			
 		} else { // select the last elemnt
 			jTable.find("tr:last").toggleClass('selected');
-			Viewport.scrollToElement(jTable.find("tr:last"));
+			viewport.scrollToElement(jTable.find("tr:last"));
 		}
 	} else {
 		if (forward) {
@@ -144,7 +155,7 @@ function changeSelection(forward){
 				next=jTable.find("tr:eq(1)");
 			}
 			next.toggleClass('selected');
-			Viewport.scrollToElement(next);
+			viewport.scrollToElement(next);
 		} else {
 			var prev=listSelected.prev();
 			
@@ -152,7 +163,7 @@ function changeSelection(forward){
 				prev=jTable.find("tr:last");
 			}
 			prev.toggleClass('selected');
-			Viewport.scrollToElement(prev);
+			viewport.scrollToElement(prev);
 		}
 		
 		listSelected.toggleClass('selected');
@@ -287,19 +298,43 @@ function previousPage(event){
 	event.preventDefault();
 }
 
+SINGLETON.handleEvent=function(event){
+	var code=event.which;
+	switch(code){
+	case 37:
+		previousPage(event);
+		break;
+	case 38:
+		previousSelection(event);
+		break;
+	case 39:
+		nextPage(event);
+		break;
+	case 40:
+		nextSelection(event);
+		break;
+	default:
+		console.debug("Editor Key code:"+code);
+		break;
+	}
+}
 
 function setupEventHandlers(){
-	KeyboardEvents.shorcut(37,false,previousPage);
-	KeyboardEvents.shorcut(39,false,nextPage);
-	
-	KeyboardEvents.shorcut(38,false,previousSelection);
-	KeyboardEvents.shorcut(40,false,nextSelection);
 
+	// $("#main").on('keydown',handleEvent);
+
+	// KeyboardEvents.shorcut(37,false,previousPage);
+	// KeyboardEvents.shorcut(39,false,nextPage);
+	//
+	// KeyboardEvents.shorcut(38,false,previousSelection);
+	// KeyboardEvents.shorcut(40,false,nextSelection);
+	
 	KeyboardEvents.shorcut(27,false,closeCellEditor); // ESC
 	KeyboardEvents.shorcut(70,false,searchKeySelection); // F 
-
+	
 	KeyboardEvents.shorcut(68,false,changeDiffing); // F 
 
+	
 	// te problem are child tables of this current tables...
 	// $("table.dataTable > tbody > tr > td").off("click"); 
 	// $(document).on("click","table.dataTable > tbody > tr > td",tableClickEventhadler); 
@@ -322,7 +357,8 @@ function initTable(_table){
 
 SINGLETON.render=function(_element){
 	el=$(_element);
-	Viewport=new Viewport();
+
+	viewport=new Viewport();
 
 	el.on( 'error.dt', function ( e, settings, techNote, message ) {
         console.log( 'An error has been reported by DataTables: ', message );
@@ -372,10 +408,16 @@ SINGLETON.render=function(_element){
 						diff.forEach(function(part){
 							// green for additions, red for deletions
 							// grey for common parts
-							var color = part.added ? 'green' :
+							var color = part.added ? '#00a500' : 
 								part.removed ? 'red' : 'grey';
-							
-							ret+='<span style="color:'+color+'">'+part.value+'</span>';
+
+							if (part.added) {
+								ret+='<span style="font-weight: bold;color:'+color+'">'+part.value+'</span>';
+							} else if (part.removed) {
+								ret+='<span style="font-weight: bold;text-decoration:line-through; color:'+color+'">'+part.value+'</span>';								
+							} else {
+								ret+=part.value;								
+							}
 						});
 						return ret;
 					}

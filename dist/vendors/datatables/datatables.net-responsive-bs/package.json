@@ -1,11 +1,19 @@
 {
   "_args": [
     [
-      "datatables.net-responsive-bs",
-      "/Users/ventura/projects/ginere-nodejs/scaffolding-gulp-jquery-bootstrap-datatables"
+      {
+        "raw": "datatables.net-responsive-bs@^2.1.1",
+        "scope": null,
+        "escapedName": "datatables.net-responsive-bs",
+        "name": "datatables.net-responsive-bs",
+        "rawSpec": "^2.1.1",
+        "spec": ">=2.1.1 <3.0.0",
+        "type": "range"
+      },
+      "/Users/angelmendogomez/projects/trilogue/prototype/scaffolding-gulp-jquery-bootstrap-datatables.git/trunk"
     ]
   ],
-  "_from": "datatables.net-responsive-bs@*",
+  "_from": "datatables.net-responsive-bs@>=2.1.1 <3.0.0",
   "_id": "datatables.net-responsive-bs@2.1.1",
   "_inCache": true,
   "_location": "/datatables.net-responsive-bs",
@@ -14,17 +22,18 @@
     "tmp": "tmp/datatables.net-responsive-bs-2.1.1.tgz_1481026934520_0.450129576260224"
   },
   "_npmUser": {
-    "email": "allan@datatables.net",
-    "name": "datatables"
+    "name": "datatables",
+    "email": "allan@datatables.net"
   },
   "_npmVersion": "1.3.6",
   "_phantomChildren": {},
   "_requested": {
-    "name": "datatables.net-responsive-bs",
-    "raw": "datatables.net-responsive-bs",
-    "rawSpec": "",
+    "raw": "datatables.net-responsive-bs@^2.1.1",
     "scope": null,
-    "spec": "*",
+    "escapedName": "datatables.net-responsive-bs",
+    "name": "datatables.net-responsive-bs",
+    "rawSpec": "^2.1.1",
+    "spec": ">=2.1.1 <3.0.0",
     "type": "range"
   },
   "_requiredBy": [
@@ -33,8 +42,8 @@
   "_resolved": "https://registry.npmjs.org/datatables.net-responsive-bs/-/datatables.net-responsive-bs-2.1.1.tgz",
   "_shasum": "8770c0fad439a7839b1633cf454e01f227dde877",
   "_shrinkwrap": null,
-  "_spec": "datatables.net-responsive-bs",
-  "_where": "/Users/ventura/projects/ginere-nodejs/scaffolding-gulp-jquery-bootstrap-datatables",
+  "_spec": "datatables.net-responsive-bs@^2.1.1",
+  "_where": "/Users/angelmendogomez/projects/trilogue/prototype/scaffolding-gulp-jquery-bootstrap-datatables.git/trunk",
   "author": {
     "name": "SpryMedia Ltd",
     "url": "http://datatables.net"
@@ -55,17 +64,16 @@
     "tarball": "https://registry.npmjs.org/datatables.net-responsive-bs/-/datatables.net-responsive-bs-2.1.1.tgz"
   },
   "files": [
-    "css/responsive.bootstrap.css",
-    "js/responsive.bootstrap.js"
+    "js/responsive.bootstrap.js",
+    "css/responsive.bootstrap.css"
   ],
   "homepage": "https://datatables.net",
-  "installable": true,
   "keywords": [
-    "Bootstrap",
+    "responsive",
     "DataTables",
     "jQuery",
-    "responsive",
-    "table"
+    "table",
+    "Bootstrap"
   ],
   "license": "MIT",
   "main": "js/responsive.bootstrap.js",
@@ -77,9 +85,10 @@
   ],
   "name": "datatables.net-responsive-bs",
   "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DataTables/Dist-DataTables-Responsive-Bootstrap.git"
+    "url": "git+https://github.com/DataTables/Dist-DataTables-Responsive-Bootstrap.git"
   },
   "style": "css/responsive.bootstrap.css",
   "version": "2.1.1"

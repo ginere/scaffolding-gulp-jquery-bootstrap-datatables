@@ -1,2 +1,2 @@
-.selected{background-color:rgba(224,151,7,.47)!important}
+.selected{background-color:rgba(224,151,7,.47)!important}.sidenav{height:100%;width:0;position:fixed;z-index:1;top:0;left:0;overflow-x:hidden;-webkit-transition:.5s;transition:.5s;border:1px solid #000;color:#111}.sidenav a{padding:8px 8px 8px 32px;text-decoration:none;color:#818181;display:block;-webkit-transition:.3s;transition:.3s}.offcanvas a:focus,.sidenav a:hover{color:#f1f1f1}.sidenav .closebtn{position:absolute;top:0;right:25px;margin-left:50px}#main{-webkit-transition:margin-left .5s;transition:margin-left .5s;padding:20px}@media screen and (max-height:450px){.sidenav{padding-top:15px}.sidenav a{font-size:18px}}
 /*# sourceMappingURL=custom.css.map */

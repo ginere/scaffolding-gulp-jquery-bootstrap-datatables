@@ -25,11 +25,6 @@
 <link href="./css/jquery-jvectormap-2.0.3.css" rel="stylesheet"/>
  -->
 
-
-<!-- Custom Theme Style
-<link href="./css/custom.css" rel="stylesheet">
- -->
-
 <!-- VENDORS -->
 <link href="./vendors/datatables/datatables.net-bs/css/dataTables.bootstrap.css" rel="stylesheet">
 <link href="./vendors/datatables/datatables.net-buttons-bs/css/buttons.bootstrap.css" rel="stylesheet">
@@ -46,31 +41,46 @@
 <!-- Custom Theme Style -->
 <link href="./css/custom.css" rel="stylesheet">
 
-   </head>
+  </head>
   <body class="container-fluid layout">
+	
+	<div id="mySidenav" class="sidenav">
+	</div>
+	
+	<section id="main">
+	  <div clas="row pull-right" style="margin:4px;padding:4px;">
+		<div class="row">
+		  <div class="col-md-8">
+			<h4>OF THE TREATY ON EUROPEAN UNION <i>(2016/C 202/01)</i></h4>
+		  </div>
+		</div> 
+	  </div> 
+	  
+	  <div id="container-consolidated-view" class="container-fluid" style="display:none;">
+	  </div>
+      <div id="container-table" class="container-fluid">
+		<!-- 
+			 display table table-striped table-bordered dataTable no-footer dt-bootstrap hover
+		  -->
+		<table id="table" cellspacing="0" width="100%" class="dt-bootstrap table table-striped table-bordered table-hover">
+          <thead>
+			<tr>
+              <th id="id"></th>
+              <th id="ec" class="text-center">
+				<button id="delete-all-btn" type="button" class="btn btn-default btn-xs">&nbsp;<i class="fa fa-unlock-alt"></i>&nbsp;</button>
+				Commission Proposal 
+			  </th>
+              <th id="ep" class="text-center btn-default"> <span class="badge">active</span> EP Mandate</th>
+              <th id="ceu" class="text-center">
+				<button id="delete-all-btn" type="button" class="btn btn-default btn-xs">&nbsp;<i class="fa fa-ellipsis-h"></i>&nbsp;</button>
+				Council Mandate</th>
+              <th id="agreement" class="text-center">Agreement</th>
+			</tr>
+          </thead>
+		</table>
+	  </div>
 
-    <div class="container-fluid">
-
-	  <!-- 
-		   display table table-striped table-bordered dataTable no-footer dt-bootstrap hover
-		-->
-	  <table id="table" cellspacing="0" width="100%" class="dt-bootstrap table table-striped table-bordered table-hover">
-        <thead>
-          <tr>
-            <th id="id"></th>
-            <th id="ec" class="text-center">
-			  <button id="delete-all-btn" type="button" class="btn btn-default btn-xs">&nbsp;<i class="fa fa-unlock-alt"></i>&nbsp;</button>
-			  Commission Proposal 
-			</th>
-            <th id="ep" class="text-center btn-default"> <span class="badge">active</span> EP Mandate</th>
-            <th id="ceu" class="text-center">
-			  <button id="delete-all-btn" type="button" class="btn btn-default btn-xs">&nbsp;<i class="fa fa-ellipsis-h"></i>&nbsp;</button>
-			  Council Mandate</th>
-            <th id="agreement" class="text-center">Agreement</th>
-          </tr>
-        </thead>
-	  </table>
-</div>
+	</section>  
 
 
 <script id="table-header-template" type="x-tmpl-template">
@@ -78,7 +88,7 @@
 	<div clas="row pull-right" style="margin:4px;padding:4px;">
 	  <div class="row">
 		<div class="col-md-8">
-		  <h4>OF THE TREATY ON EUROPEAN UNION <i>(2016/C 202/01)</i></h5>
+		  <h4>Table editorc</i></h5>
 		</div>
 		<div class="col-md-4">
 		  <div class="dt-buttons btn-group">

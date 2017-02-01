@@ -10,7 +10,11 @@ console.log("Hello wolrd!");
 var $ = require('jquery');
 var Q = require('q');
 
+
 var Editor = require('./Editor');
+var ConsolidatedView = require('./ConsolidatedView');
+var Overlay = require('./Overlay');
+
 var KeyboardEvents=require('./KeyboardEvents');
 
 
@@ -23,8 +27,58 @@ $(document).ready(function() {
 	// render the table
 	Editor.render("#table");
 
-	KeyboardEvents.shorcut(39,false,function(){
-		console.info("Pepe:...");
+	// Render
+	Overlay.render();
+
+	if (Overlay.isOpen()){
+		KeyboardEvents.default(Overlay.handleEvent);
+	} else {
+		KeyboardEvents.default(Editor.handleEvent);
+	}
+	
+	// T
+	KeyboardEvents.shorcut(84,false,function(){
+		if (Overlay.switch()){
+			KeyboardEvents.default(Overlay.handleEvent);
+		} else {
+			KeyboardEvents.default(Editor.handleEvent);
+		}
+	});	
+
+	KeyboardEvents.shorcut(67,false,function(){ // C
+		console.info("Consolidated view");
+		
+		$("#container-table").hide();
+		ConsolidatedView.render("#container-consolidated-view","ep");		
+		$("#container-consolidated-view").fadeIn();
+		
 	});
-    // $('#example').DataTable();
+
+	KeyboardEvents.shorcut(86,false,function(){ //V
+		console.info("Consolidated view");
+		
+		$("#container-table").hide();
+		ConsolidatedView.render("#container-consolidated-view","ceu");		
+		$("#container-consolidated-view").fadeIn();
+		
+	});
+
+	KeyboardEvents.shorcut(66,false,function(){ //B
+		console.info("Consolidated view");
+		
+		$("#container-table").hide();
+		ConsolidatedView.render("#container-consolidated-view","agreement");		
+		$("#container-consolidated-view").fadeIn();
+		
+	});
+
+	KeyboardEvents.shorcut(69,false,function(){ //E
+		console.info("Editor view");
+
+		$("#container-consolidated-view").hide();
+		$("#container-table").fadeIn();
+		// Editor.render("#table");
+	});
+
+	// $('#example').DataTable();
 });

@@ -2,7 +2,7 @@
   "name": "scaffolding-gulp-jquery-bootstrap-datatables",
   "version": "1.0.0",
   "description": "This is a sample project using: gulp-jquery-bootstrap-datatables",
-  "main": "index.js",
+  "main": "gulpfile.js",
   "directories": {
     "doc": "docs"
   },

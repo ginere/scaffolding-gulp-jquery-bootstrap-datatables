@@ -20,4 +20,8 @@ git push -u origin master
 3/ Create un instal.sh file
 
 
+# SVN
+svn checkout http://git@github.com/ginere/js-console.git
+
+
 * [NEXT: Create a npm project](/docs/npm-instalation.md)
